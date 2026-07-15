@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vid Doss — Web Developer | The Official Slam Book</title>
+<meta name="description" content="Vid Doss is an experienced web developer in Mississauga, Ontario who builds fast, friendly websites for local businesses. This is his slam book.">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Patrick+Hand&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #2b2b2b;
+    --blue-ink: #1d4ed8;
+    --red-ink: #dc2626;
+    --marker: #7c3aed;
+    --paper: #fff8c4;
+    --line: rgba(180, 150, 30, .28);
+    --accent: #0e7c66;
+    --tape: rgba(244, 185, 66, .55);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Patrick Hand', 'Segoe UI', sans-serif;
+    color: var(--ink);
+    background: #f5e9c8 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" opacity=".05"><circle cx="40" cy="40" r="1.5"/></svg>');
+    line-height: 1.6;
+    font-size: 1.25rem;
+    position: relative;
+  }
+  .page {
+    max-width: 1000px; margin: 48px auto; padding: 60px 52px;
+    background: var(--paper);
+    background-image: repeating-linear-gradient(transparent, transparent 34px, var(--line) 35px);
+    border-radius: 4px;
+    box-shadow: 0 8px 24px rgba(43,43,43,.14), 0 1px 3px rgba(43,43,43,.1);
+    position: relative;
+  }
+  /* red margin line like a real notebook */
+  .page::before {
+    content: ""; position: absolute; top: 0; bottom: 0; left: 56px;
+    width: 2px; background: rgba(220,38,38,.25);
+  }
+  /* sticky-note curled corner */
+  .page::after {
+    content: ""; position: absolute; right: 0; bottom: 0;
+    border-style: solid; border-width: 0 0 42px 42px;
+    border-color: transparent transparent rgba(160,130,20,.22) transparent;
+  }
+  /* alternate slight tilt like stuck-on notes */
+  .page:nth-of-type(odd) { transform: rotate(-.35deg); }
+  .page:nth-of-type(even) { transform: rotate(.4deg); }
+  .page > * { position: relative; margin-left: 34px; }
+
+  h1, h2 { font-family: 'Caveat', cursive; color: var(--marker); }
+  h1 { font-size: clamp(2.8rem, 7vw, 4.4rem); line-height: 1.1; }
+  h2 { font-size: clamp(2.2rem, 5vw, 3rem); margin-bottom: 14px; }
+  .subtitle { font-family: 'Kalam', cursive; color: #6b7280; font-size: 1.05rem; }
+
+  /* ---------- Q&A entries ---------- */
+  .entry { margin: 22px 0; }
+  .entry .q {
+    font-family: 'Kalam', cursive; font-weight: 700; font-size: 1rem;
+    color: var(--red-ink); text-transform: uppercase; letter-spacing: .5px;
+  }
+  .entry .a {
+    font-family: 'Patrick Hand', sans-serif; font-size: 1.5rem; color: var(--blue-ink);
+    line-height: 1.45;
+  }
+  .entry .a small { font-size: 1.05rem; color: #57606e; }
+
+  /* ---------- polaroids ---------- */
+  .polaroids { display: flex; flex-wrap: wrap; gap: 26px; justify-content: center; margin-top: 26px; }
+  .polaroid {
+    background: #fff; padding: 12px 12px 14px; width: 240px;
+    box-shadow: 0 6px 18px rgba(43,43,43,.22);
+    transform: rotate(-2.4deg);
+  }
+  .polaroid:nth-child(2) { transform: rotate(1.8deg); }
+  .polaroid:nth-child(3) { transform: rotate(-1.2deg); }
+  .polaroid:nth-child(4) { transform: rotate(2.6deg); }
+  .polaroid:hover { transform: rotate(0) scale(1.04); transition: transform .2s; }
+  .polaroid::before {
+    content: ""; position: absolute; top: -12px; left: 50%; transform: translateX(-50%) rotate(-2deg);
+    width: 90px; height: 26px; background: var(--tape);
+  }
+  .polaroid { position: relative; }
+  .polaroid img { width: 100%; height: 220px; object-fit: cover; display: block; }
+  .polaroid figcaption {
+    font-family: 'Patrick Hand', sans-serif; font-size: 1.05rem; text-align: center;
+    padding-top: 10px; color: var(--ink);
+  }
+
+  /* hero polaroid */
+  .hero-wrap { display: flex; flex-wrap: wrap; gap: 34px; align-items: center; }
+  .hero-text { flex: 1 1 340px; }
+  .hero-polaroid { flex: 0 0 auto; margin: 0 auto; }
+  .hero-polaroid .polaroid { width: 260px; transform: rotate(2deg); }
+  .hero-polaroid img { height: 280px; object-position: top; }
+
+  /* ---------- buttons ---------- */
+  .btn {
+    display: inline-block; margin: 18px 12px 0 0; padding: 14px 30px;
+    background: var(--accent); color: #fff; text-decoration: none;
+    border-radius: 999px; font-family: 'Kalam', cursive; font-weight: 700;
+    font-size: 1.1rem; border: 3px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--ink);
+    transition: transform .15s, box-shadow .15s;
+  }
+  .btn:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); }
+  .btn.alt { background: #fff; color: var(--ink); }
+  .btn-note { display: block; margin-top: 12px; font-family: 'Kalam', cursive; color: #6b7280; font-size: 1rem; }
+
+  /* ---------- service scribbles ---------- */
+  .scribbles { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; margin-top: 24px; }
+  .scribble {
+    border: 3px dashed var(--marker); border-radius: 16px; padding: 20px;
+    background: rgba(255,255,255,.7); transform: rotate(-.6deg);
+  }
+  .scribble:nth-child(2) { transform: rotate(.8deg); border-color: var(--accent); }
+  .scribble:nth-child(3) { transform: rotate(-.4deg); border-color: var(--red-ink); }
+  .scribble h3 { font-family: 'Kalam', cursive; font-weight: 700; font-size: 1.3rem; color: var(--ink); }
+  .scribble p { font-size: 1.05rem; color: #414b59; margin-top: 6px; }
+
+  /* ---------- doodles ---------- */
+  .doodle { position: absolute; font-size: 1.9rem; opacity: .85; }
+  .doodle.sm { font-size: 1.4rem; opacity: .7; }
+  .doodle.tilt-l { transform: rotate(-15deg); }
+  .doodle.tilt-r { transform: rotate(14deg); }
+
+  /* ---------- FAQ ---------- */
+  details {
+    margin-top: 14px; padding: 14px 20px; background: rgba(255,255,255,.75);
+    border-radius: 12px; border: 2px solid #e5e7eb; cursor: pointer;
+  }
+  summary { font-family: 'Kalam', cursive; font-weight: 700; font-size: 1.1rem; }
+  details p { margin-top: 8px; color: #4b5563; font-size: 1.05rem; }
+
+  /* ---------- header ---------- */
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: linear-gradient(180deg, #5e0f1e, #4a0b17); /* dark maple red */
+    border-bottom: 4px solid #d52b1e;
+    box-shadow: 0 3px 12px rgba(43,43,43,.3);
+    padding: 10px 18px;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px;
+  }
+  .site-header .logo {
+    font-family: 'Caveat', cursive; font-weight: 700; font-size: 1.7rem;
+    color: #fff8c4; text-decoration: none;
+  }
+  .site-header nav { display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: center; }
+  .site-header nav a {
+    font-family: 'Kalam', cursive; font-size: 1rem; color: #ffe9e0;
+    text-decoration: none; padding: 4px 8px; border-radius: 8px;
+  }
+  .site-header nav a:hover { background: rgba(255,255,255,.16); }
+  .site-header .mini-btn {
+    background: #fff8c4; color: #5e0f1e; border: 2px solid #fff;
+    border-radius: 999px; padding: 6px 16px; box-shadow: 2px 2px 0 rgba(0,0,0,.4);
+    font-weight: 700;
+  }
+  .site-header .mini-btn:hover { background: #fff; }
+
+  /* ---------- skip link ---------- */
+  .skip-link {
+    position: absolute; left: -9999px; top: 0; z-index: 100;
+    background: var(--ink); color: #fff; padding: 12px 20px; font-size: 1rem;
+  }
+  .skip-link:focus { left: 0; }
+
+  /* ---------- background wall notes ---------- */
+  .wall { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .wall-note {
+    position: absolute; width: 240px; padding: 20px;
+    font-family: 'Caveat', cursive; font-size: 1.5rem; line-height: 1.3;
+    color: #3b3b3b; box-shadow: 4px 5px 14px rgba(43,43,43,.2);
+  }
+  .wall-note .who { display: block; font-family: 'Kalam', cursive; font-size: .95rem; color: #6b7280; margin-top: 8px; }
+  .wall-note.pink { background: #ffd6e7; transform: rotate(-4deg); }
+  .wall-note.blue { background: #cfe8ff; transform: rotate(3deg); }
+  .wall-note.green { background: #d3f5d3; transform: rotate(-2.5deg); }
+  .wall-note.orange { background: #ffe0b3; transform: rotate(4deg); }
+  .wall-doodle { position: absolute; font-size: 1.8rem; opacity: .5; }
+  /* army of ants marching between sticky notes */
+  .ant {
+    position: absolute; font-size: 13px; opacity: .85;
+    filter: brightness(0); /* solid dark ant silhouettes */
+    transform: translate(-50%, -50%) rotate(var(--ang, 0deg));
+    animation: march 1.4s linear infinite;
+  }
+  @keyframes march {
+    from { transform: translate(-50%, -50%) rotate(var(--ang, 0deg)); }
+    to   { transform: translate(calc(-50% + var(--mx, 0px)), calc(-50% + var(--my, 0px))) rotate(var(--ang, 0deg)); }
+  }
+  main, .site-header, footer { position: relative; z-index: 1; }
+  @media (max-width: 1560px) { .wall { display: none; } }
+
+  /* ---------- footer ---------- */
+  footer {
+    background: var(--ink); color: #e5e7eb;
+    margin-top: 60px; padding: 40px 24px 26px;
+    font-family: 'Patrick Hand', sans-serif; font-size: 1rem;
+  }
+  .footer-cols {
+    max-width: 900px; margin: 0 auto; display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px;
+  }
+  footer h3 { font-family: 'Caveat', cursive; font-size: 1.6rem; color: #fff8c4; margin-bottom: 8px; }
+  footer a { color: #8ee6cf; }
+  footer ul { list-style: none; }
+  footer li { margin: 6px 0; }
+  .copyright {
+    max-width: 900px; margin: 28px auto 0; padding-top: 18px;
+    border-top: 1px solid #4b5563; text-align: center; color: #9ca3af; font-size: .95rem;
+  }
+
+  .center { text-align: center; }
+
+  /* ---------- accessibility ---------- */
+  a:focus-visible, summary:focus-visible, .btn:focus-visible {
+    outline: 3px solid var(--blue-ink); outline-offset: 3px; border-radius: 4px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; }
+    .page, .polaroid, .scribble, .wall-note { transform: none !important; }
+    .ant { animation: none !important; }
+  }
+
+  @media (max-width: 640px) {
+    .page { padding: 40px 22px; margin: 24px 12px; }
+    .page::before { left: 30px; }
+    .page > * { margin-left: 18px; }
+    .site-header nav { font-size: .9rem; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ============ SITE HEADER ============ -->
+<header class="site-header">
+  <a class="logo" href="#main">🍁 Vid's Slam Book</a>
+  <nav aria-label="Page sections">
+    <a href="#about">About Me</a>
+    <a href="#services">What I Do</a>
+    <a href="#photos">Photos</a>
+    <a href="#faq">Questions</a>
+    <a href="#profiles">Profiles</a>
+      <a class="mini-btn" href="https://cal.com/vidhyasagar-chitharanjan-doss-uqn7l6/15min">Book a chat</a>
+  </nav>
+</header>
+
+<!-- ============ BACKGROUND WALL (decorative) ============ -->
+<div class="wall" aria-hidden="true">
+  <div class="wall-note pink" style="top:240px; left:1.5%;">"Very talented boy."<span class="who">— my mom (unbiased source)</span></div>
+  <div class="wall-note blue" style="top:660px; right:1.5%;">"★★★★★ would scroll again."<span class="who">— you, in about 2 minutes</span></div>
+  <div class="wall-note green" style="top:1150px; left:2%;">"He replies to emails. Like, actually."<span class="who">— everyone, eventually</span></div>
+  <div class="wall-note orange" style="top:1600px; right:2%;">Why did the website go to therapy?<span class="who">Too many unresolved issues. 🥁</span></div>
+  <div class="wall-note blue" style="top:2100px; left:1.5%;">"10/10 slam book. Better than grade 7."<span class="who">— my old classmate (probably)</span></div>
+  <div class="wall-note pink" style="top:2600px; right:1.5%;">Roses are red, my code is clean,<span class="who">your site will be the best they've seen 🌹</span></div>
+  <div class="wall-note green" style="top:3100px; right:2.5%;">"Still scrolling? I like you already."<span class="who">— Vid</span></div>
+  <div class="wall-note orange" style="top:3500px; left:2%;">FREE coffee accepted here ☕<span class="who">(this is a legally binding sticky note)</span></div>
+  <div class="wall-note pink" style="top:3900px; right:2%;">Sorry in advance for how good your website will be. 🇨🇦<span class="who">— Vid, being Canadian about it</span></div>
+  <span class="wall-doodle" style="top:480px; left:6%;">❤️</span>
+  <span class="wall-doodle" style="top:920px; right:6%;">✏️</span>
+  <span class="wall-doodle" style="top:1400px; left:7%;">⭐</span>
+  <span class="wall-doodle" style="top:1900px; right:7%;">☕</span>
+  <span class="wall-doodle" style="top:2350px; left:5%;">🚲</span>
+  <span class="wall-doodle" style="top:2850px; right:5%;">💻</span>
+  <span class="wall-doodle" style="top:3300px; left:6%;">🎉</span>
+  <span class="wall-doodle" style="top:700px; left:5%;">🍁</span>
+  <span class="wall-doodle" style="top:1650px; right:5%;">🍁</span>
+  <span class="wall-doodle" style="top:2550px; left:7%;">🇨🇦</span>
+  <span class="wall-doodle" style="top:3700px; right:6%;">🍁</span>
+</div>
+
+<main id="main">
+
+<!-- ============ COVER PAGE ============ -->
+<div class="page">
+  <span aria-hidden="true" class="doodle" style="top:18px; right:26px;">⭐</span>
+  <span aria-hidden="true" class="doodle" style="bottom:20px; left:70px;">✏️</span>
+  <span aria-hidden="true" class="doodle sm tilt-l" style="top:14px; left:80px;">📎</span>
+  <span aria-hidden="true" class="doodle sm tilt-r" style="top:45%; right:14px;">✨</span>
+  <span aria-hidden="true" class="doodle sm" style="bottom:16px; right:60px;">🚀</span>
+  <span aria-hidden="true" class="doodle tilt-r" style="top:60px; right:80px;">🍁</span>
+  <div class="hero-wrap">
+    <div class="hero-text">
+      <p class="subtitle">~ if found, please return to Mississauga, Ontario 🇨🇦 ~</p>
+      <h1>The Official Slam Book of Vid Doss</h1>
+      <p style="margin-top:14px;">Remember those notebooks you passed around in school where friends
+      answered nosy questions? This is mine. <strong>I'm an experienced web developer</strong>, you probably need a website,
+      and this beats reading a boring corporate "About Us" page. Deal?</p>
+          <a class="btn" href="https://cal.com/vidhyasagar-chitharanjan-doss-uqn7l6/15min">📅 Book a free 15-min chat</a>
+      <span class="btn-note">No sales pitch. You talk, I listen, you keep the free advice.</span>
+    </div>
+    <div class="hero-polaroid">
+      <figure class="polaroid">
+        <img src="headshot.jpg" alt="Vid Doss, web developer in Mississauga">
+        <figcaption>me, headshot with ants in my pants</figcaption>
+      </figure>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 1: ABOUT ME ============ -->
+<div class="page">
+  <span aria-hidden="true" class="doodle" style="top:20px; right:40px;">🖊️</span>
+  <span aria-hidden="true" class="doodle sm tilt-r" style="top:40%; right:18px;">☕</span>
+  <span aria-hidden="true" class="doodle sm tilt-l" style="bottom:18px; right:70px;">🚲</span>
+  <span aria-hidden="true" class="doodle sm" style="bottom:50px; left:66px;">🎵</span>
+  <span aria-hidden="true" class="doodle sm tilt-l" style="top:60%; left:64px;">🍁</span>
+  <h2 id="about">Page 1 — About Me</h2>
+  <div class="entry">
+    <div class="q">Full name:</div>
+    <div class="a">Vidhyasagar Chitharanjan Doss <small>(this is why the domain says "Vid")</small></div>
+  </div>
+  <div class="entry">
+    <div class="q">What everyone calls me:</div>
+    <div class="a">Vid. One syllable. You already know it forever.</div>
+  </div>
+  <div class="entry">
+    <div class="q">Where I live:</div>
+    <div class="a">Mississauga, Ontario 🇨🇦 — yes, I'll meet you for coffee.</div>
+  </div>
+  <div class="entry">
+    <div class="q">What I do:</div>
+    <div class="a">Web developer. 10+ years building software professionally — now I build websites that get local businesses found, trusted, and called.</div>
+  </div>
+  <div class="entry">
+    <div class="q">My ambition in life:</div>
+    <div class="a">That when someone Googles your business, they find YOU — not your competitor across the street.</div>
+  </div>
+  <div class="entry">
+    <div class="q">Hobbies:</div>
+    <div class="a">Cycling the waterfront trail, teaching kids math on weekends, accepting coffee.</div>
+  </div>
+</div>
+
+<!-- ============ PAGE 2: WHAT I CAN DO FOR YOU ============ -->
+<div class="page">
+  <span aria-hidden="true" class="doodle" style="top:22px; right:34px;">💻</span>
+  <span aria-hidden="true" class="doodle sm tilt-l" style="top:14px; left:80px;">💡</span>
+  <span aria-hidden="true" class="doodle sm tilt-r" style="bottom:20px; right:56px;">✅</span>
+  <span aria-hidden="true" class="doodle sm" style="bottom:40px; left:64px;">📱</span>
+  <span aria-hidden="true" class="doodle sm tilt-r" style="top:50%; right:20px;">🍁</span>
+  <h2 id="services">Page 2 — What I Can Do For You</h2>
+  <p class="subtitle">(the part my teachers would call "the point")</p>
+  <div class="scribbles">
+    <div class="scribble">
+      <h3>"I don't have a website" 😬</h3>
+      <p>I'll build you one from scratch — fast, mobile-friendly, easy to find on Google, and it actually looks like your business. Ready in days, not months.</p>
+    </div>
+    <div class="scribble">
+      <h3>"My website is... old" 🦖</h3>
+      <p>If your site was last touched when flash mobs were cool, I'll rebuild it into something you're proud to put on your van, your card, and your fridge.</p>
+    </div>
+    <div class="scribble">
+      <h3>"I have zero time for this" ⏰</h3>
+      <p>Good — you shouldn't be doing this yourself. I handle everything: domain, hosting, updates. You run your business, I keep the website running.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 3: PHOTO CORNER ============ -->
+<div class="page">
+  <span aria-hidden="true" class="doodle" style="top:20px; left:70px;">📸</span>
+  <span aria-hidden="true" class="doodle sm tilt-r" style="top:24px; right:34px;">🌈</span>
+  <span aria-hidden="true" class="doodle sm tilt-l" style="bottom:18px; left:80px;">😄</span>
+  <span aria-hidden="true" class="doodle sm" style="bottom:24px; right:40px;">🧡</span>
+  <span aria-hidden="true" class="doodle sm tilt-l" style="top:50%; left:66px;">🍁</span>
+  <h2 class="center" id="photos">Page 3 — Photo Corner</h2>
+  <p class="subtitle center">every slam book has one. rules are rules.</p>
+  <div class="polaroids">
+    <figure class="polaroid">
+      <img src="coffee.jpg" alt="Vid with coffee and his bike at the Port Credit lighthouse">
+      <figcaption>coffee + lighthouse = business meeting?</figcaption>
+    </figure>
+    <figure class="polaroid">
+      <img src="bike.jpg" alt="Vid cycling in Mississauga">
+      <figcaption>full safety gear. imagine me with your website.</figcaption>
+    </figure>
+    <figure class="polaroid">
+      <img src="boat.jpg" alt="Vid on a boat on Georgian Bay">
+      <figcaption>dramatically thinking about fonts</figcaption>
+    </figure>
+    <figure class="polaroid">
+      <img src="grad.jpg" alt="Vid at his Sheridan College graduation">
+      <figcaption>proof I finish what I start 🎓</figcaption>
+    </figure>
+  </div>
+</div>
+
+<!-- ============ PAGE 4: NOSY QUESTIONS ============ -->
+<div class="page">
+  <span aria-hidden="true" class="doodle" style="top:20px; right:40px;">❓</span>
+  <span aria-hidden="true" class="doodle sm tilt-l" style="top:16px; left:80px;">🤔</span>
+  <span aria-hidden="true" class="doodle sm tilt-r" style="bottom:22px; right:60px;">⚡</span>
+  <span aria-hidden="true" class="doodle sm tilt-l" style="top:50%; left:64px;">🍁</span>
+  <h2 id="faq">Page 4 — The Nosy Questions</h2>
+  <p class="subtitle">(asked by real business owners, answered honestly)</p>
+  <details>
+    <summary>"How much does a website cost?"</summary>
+    <p>Less than you fear, more than $0. It depends on what you need — in our first chat I'll give you a straight number and you can sleep on it. No pressure tactics, ever.</p>
+  </details>
+  <details>
+    <summary>"How long does it take?"</summary>
+    <p>A simple local business site: days, not months. I'll give you a real date before we start, and I'll hit it.</p>
+  </details>
+  <details>
+    <summary>"I'm not techy at all. Is that a problem?"</summary>
+    <p>It's the opposite of a problem — it's my favourite kind of client. You explain your business in plain English, I handle 100% of the technical stuff, and I never answer a question with jargon.</p>
+  </details>
+  <details>
+    <summary>"Will I be able to find you after you're paid?"</summary>
+    <p>Yes. I live here, I build long-term relationships, and I want your referrals — which means your site has to keep working and you have to keep liking me.</p>
+  </details>
+  <details>
+    <summary>"Why is this website a slam book?"</summary>
+    <p>Because you smiled, didn't you? That's what a good website does — it makes people remember you. I'd like to do the same for your business.</p>
+  </details>
+</div>
+
+<!-- ============ PAGE 5: STALK ME PROFESSIONALLY ============ -->
+<div class="page center">
+  <span aria-hidden="true" class="doodle" style="top:20px; left:70px;">🔍</span>
+  <span aria-hidden="true" class="doodle sm tilt-r" style="top:24px; right:36px;">👀</span>
+  <span aria-hidden="true" class="doodle sm tilt-l" style="bottom:20px; left:90px;">🌟</span>
+  <span aria-hidden="true" class="doodle sm tilt-r" style="top:50%; right:24px;">🍁</span>
+  <h2 id="profiles">Page 5 — Stalk Me (Professionally)</h2>
+  <p>Don't take my slam book's word for it — check my grown-up pages:</p>
+  <a class="btn alt" href="https://www.linkedin.com/in/vsdoss1990" target="_blank" rel="noopener">💼 LinkedIn</a>
+  <a class="btn alt" href="https://www.upwork.com/freelancers/~0177daba7f777a63c8" target="_blank" rel="noopener">⭐ Upwork</a>
+</div>
+
+<!-- ============ LAST PAGE: SIGN MY SLAM BOOK ============ -->
+<div class="page center">
+  <span aria-hidden="true" class="doodle" style="top:18px; right:34px;">✍️</span>
+  <span aria-hidden="true" class="doodle sm tilt-l" style="top:20px; left:80px;">💌</span>
+  <span aria-hidden="true" class="doodle sm tilt-r" style="bottom:18px; right:70px;">🎉</span>
+  <span aria-hidden="true" class="doodle sm" style="bottom:22px; left:90px;">🤝</span>
+  <span aria-hidden="true" class="doodle tilt-r" style="top:50%; right:30px;">🍁</span>
+  <h2 id="contact">Last Page — Sign My Slam Book</h2>
+  <p>In school, the last page was for your best friend.<br>
+  In business, it's for the owner who's tired of not having a proper website.</p>
+  <a class="btn" href="https://cal.com/vidhyasagar-chitharanjan-doss-uqn7l6/15min">📅 Book a free 15-min chat</a>
+  <span class="btn-note">Bigger project? <a href="https://cal.com/vidhyasagar-chitharanjan-doss-uqn7l6/30min" style="color:var(--accent);">Book 30 minutes</a> · Prefer email? <a href="mailto:vsdoss1990@gmail.com" style="color:var(--accent);">vsdoss1990@gmail.com</a> · Prefer coffee? Mississauga. I accept coffee.</span>
+</div>
+
+</main>
+
+<footer>
+  <div class="footer-cols">
+    <div>
+      <h3>Vid Doss 🍁</h3>
+      <p>Experienced web developer in Mississauga, Ontario 🇨🇦. I build websites that get local businesses found, trusted, and called — and I make it painless.</p>
+    </div>
+    <div>
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#services">What I Do</a></li>
+        <li><a href="#photos">Photo Corner</a></li>
+        <li><a href="#faq">Questions</a></li>
+              <li><a href="https://cal.com/vidhyasagar-chitharanjan-doss-uqn7l6/15min">Book a free 15-min chat</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Find Me</h3>
+      <ul>
+        <li><a href="mailto:vsdoss1990@gmail.com">vsdoss1990@gmail.com</a></li>
+              <li><a href="https://www.linkedin.com/in/vsdoss1990" target="_blank" rel="noopener">LinkedIn</a></li>
+              <li><a href="https://www.upwork.com/freelancers/~0177daba7f777a63c8" target="_blank" rel="noopener">Upwork</a></li>
+        <li>Mississauga, Ontario, Canada 🇨🇦</li>
+      </ul>
+    </div>
+  </div>
+  <div class="copyright">
+    © 2026 Vidhyasagar Chitharanjan Doss. All rights reserved. · <a href="https://viddoss.com">viddoss.com</a> · Proudly made in Canada 🍁<br>
+    Handwritten-ish with ❤️ — the full name didn't fit on the cover.
+  </div>
+</footer>
+
+<script>
+// Army of ants marching in line between the background sticky notes
+function drawAnts() {
+  var wall = document.querySelector('.wall');
+  if (!wall || getComputedStyle(wall).display === 'none') return;
+  wall.querySelectorAll('.ant').forEach(function (a) { a.remove(); });
+
+  var notes = Array.prototype.slice.call(wall.querySelectorAll('.wall-note'));
+  if (notes.length < 2) return;
+  var wr = wall.getBoundingClientRect();
+  var pad = 14; // keep-clear zone around each note
+  var rects = notes.map(function (n) {
+    var r = n.getBoundingClientRect();
+    return {
+      left: r.left - wr.left - pad, right: r.right - wr.left + pad,
+      top: r.top - wr.top - pad, bottom: r.bottom - wr.top + pad,
+      cx: r.left + r.width / 2 - wr.left, cy: r.top + r.height / 2 - wr.top
+    };
+  });
+  // march in top-to-bottom order
+  rects.sort(function (a, b) { return a.cy - b.cy; });
+  function insideAnyNote(x, y) {
+    return rects.some(function (r) {
+      return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
+    });
+  }
+
+  var frag = document.createDocumentFragment();
+  for (var i = 0; i < rects.length - 1; i++) {
+    var a = rects[i], b = rects[i + 1];
+    var dx = b.cx - a.cx, dy = b.cy - a.cy;
+    var dist = Math.hypot(dx, dy);
+    var step = 32;
+    var count = Math.floor(dist / step);
+
+    // build curved path points first, then orient each ant along its local direction
+    var pts = [];
+    for (var j = 0; j <= count; j++) {
+      var t = j / count;
+      var wobble = Math.sin(t * Math.PI * 3 + i) * 16;
+      pts.push({
+        x: a.cx + dx * t - (dy / dist) * wobble,
+        y: a.cy + dy * t + (dx / dist) * wobble
+      });
+    }
+    for (var k = 1; k < pts.length - 1; k++) {
+      var p = pts[k];
+      if (insideAnyNote(p.x, p.y)) continue; // never walk on the sticky notes
+      // local travel direction from neighbouring points on the curve
+      var ldx = pts[k + 1].x - pts[k - 1].x;
+      var ldy = pts[k + 1].y - pts[k - 1].y;
+      var llen = Math.hypot(ldx, ldy) || 1;
+      var angle = Math.atan2(ldy, ldx) * 180 / Math.PI + 180; // Windows ant glyph faces left; +180 points head along travel direction
+      var s = document.createElement('span');
+      s.className = 'ant';
+      s.textContent = '🐜';
+      s.setAttribute('aria-hidden', 'true');
+      s.style.left = p.x + 'px';
+      s.style.top = p.y + 'px';
+      s.style.setProperty('--ang', angle + 'deg');
+      s.style.setProperty('--mx', (ldx / llen) * 16 + 'px');
+      s.style.setProperty('--my', (ldy / llen) * 16 + 'px');
+      s.style.animationDelay = -(k * 0.18) + 's';
+      frag.appendChild(s);
+    }
+  }
+  wall.appendChild(frag);
+}
+window.addEventListener('load', drawAnts);
+var antTimer;
+window.addEventListener('resize', function () {
+  clearTimeout(antTimer);
+  antTimer = setTimeout(drawAnts, 250);
+});
+</script>
+
+</body>
+</html>
