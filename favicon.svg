@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- sticky note, slightly tilted -->
+  <g transform="rotate(-4 32 32)">
+    <rect x="6" y="6" width="52" height="52" rx="3" fill="#ffe066" stroke="#e6b800" stroke-width="1.5"/>
+    <!-- folded corner -->
+    <path d="M58 44 L58 58 L44 58 Z" fill="#f2c94c"/>
+    <path d="M58 44 L44 58 L46 44 Z" fill="#d9a521"/>
+    <!-- handwritten V in maple red -->
+    <path d="M18 18 L30 48 L33 48 L46 16" fill="none" stroke="#8b1a1a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
